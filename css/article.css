@@ -178,3 +178,8 @@
   object-position: center;
   display: block;
 }
+
+.article-body.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
