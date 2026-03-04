@@ -1184,15 +1184,25 @@ footer {
   gap: 24px;
 }
 
+.footer-social {
+  display: flex;
+  gap: 20px;
+}
+
 .footer-social a {
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-faint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--ink-soft);
-  transition: color 0.2s;
+  font-size: 0.85rem;
+  transition: all 0.2s;
 }
 
 .footer-social a:hover {
+  border-color: var(--terracotta);
   color: var(--terracotta);
 }
