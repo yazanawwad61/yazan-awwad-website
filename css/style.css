@@ -72,6 +72,7 @@ nav {
   right: 0;
   z-index: 500;
   padding: 0 48px;
+  padding-top: env(safe-area-inset-top);
   height: var(--nav-h);
   display: flex;
   align-items: center;
