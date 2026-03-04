@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup Guide — Yazan Awwad Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1A1714; --ink-mid: #4A4540; --ink-soft: #8A837C;
+  --paper: #FAF8F5; --paper-warm: #F4EFE8; --paper-deep: #EDE6DC;
+  --terracotta: #C4714A; --sage: #7A9E8C; --line: rgba(26,23,20,0.09);
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); background: var(--paper); color: var(--ink); line-height: 1.7; }
+a { color: var(--terracotta); }
+
+/* Layout */
+.guide { max-width: 700px; margin: 0 auto; padding: 60px 32px 100px; }
+.guide-header { margin-bottom: 60px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
+.guide-tag {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--terracotta); margin-bottom: 16px;
+}
+.guide-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem; font-weight: 500; line-height: 1.2;
+  letter-spacing: -0.02em; margin-bottom: 16px;
+}
+.guide-subtitle { font-size: 1rem; color: var(--ink-mid); line-height: 1.7; }
+
+/* Table of contents */
+.toc {
+  background: var(--paper-warm); border-radius: 4px;
+  padding: 28px 32px; margin-bottom: 56px;
+  border: 1px solid var(--paper-deep);
+}
+.toc-title { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 16px; }
+.toc ol { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+.toc li { font-size: 0.9rem; }
+.toc a { color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+.toc a:hover { color: var(--terracotta); }
+
+/* Steps */
+.step-block { margin-bottom: 56px; padding-bottom: 56px; border-bottom: 1px solid var(--line); }
+.step-block:last-child { border-bottom: none; }
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--terracotta); color: #fff;
+  font-size: 0.85rem; font-weight: 700;
+  margin-bottom: 14px;
+}
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem; font-weight: 500;
+  line-height: 1.25; margin-bottom: 14px;
+}
+.step-body { font-size: 0.95rem; color: var(--ink-mid); line-height: 1.78; margin-bottom: 20px; }
+.step-body p { margin-bottom: 14px; }
+.step-body p:last-child { margin-bottom: 0; }
+.step-body strong { color: var(--ink); font-weight: 600; }
+
+/* Substeps */
+.substeps { display: flex; flex-direction: column; gap: 16px; margin: 24px 0; }
+.substep {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 16px 18px;
+  background: var(--paper-warm);
+  border-radius: 4px; border-left: 3px solid var(--terracotta);
+}
+.substep-num {
+  font-size: 0.75rem; font-weight: 700; color: var(--terracotta);
+  min-width: 20px; margin-top: 2px;
+}
+.substep-text { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.65; }
+.substep-text strong { color: var(--ink); }
+
+/* Code */
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  background: var(--paper-deep);
+  color: var(--terracotta);
+  padding: 2px 7px; border-radius: 3px;
+}
+.code-block {
+  background: var(--ink); color: #E8E0D5;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem; line-height: 1.6;
+  padding: 20px 24px; border-radius: 4px;
+  margin: 16px 0; overflow-x: auto;
+  white-space: pre;
+}
+.code-comment { color: #6B6058; }
+
+/* Tips and warnings */
+.tip {
+  background: rgba(122,158,140,0.1);
+  border: 1px solid rgba(122,158,140,0.3);
+  border-radius: 4px; padding: 16px 20px;
+  font-size: 0.88rem; color: var(--ink-mid);
+  line-height: 1.65; margin: 20px 0;
+}
+.tip-label { font-weight: 700; color: var(--sage); display: block; margin-bottom: 4px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.warning {
+  background: rgba(196,113,74,0.08);
+  border: 1px solid rgba(196,113,74,0.25);
+  border-radius: 4px; padding: 16px 20px;
+  font-size: 0.88rem; color: var(--ink-mid);
+  line-height: 1.65; margin: 20px 0;
+}
+.warning-label { font-weight: 700; color: var(--terracotta); display: block; margin-bottom: 4px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* File tree */
+.file-tree {
+  background: var(--paper-deep); border-radius: 4px;
+  padding: 20px 24px; margin: 16px 0;
+  font-family: 'Courier New', monospace; font-size: 0.85rem;
+  line-height: 1.8; color: var(--ink-mid);
+}
+.file-tree .folder { color: var(--ink); font-weight: 600; }
+.file-tree .file { color: var(--ink-soft); }
+.file-tree .comment { color: var(--ink-faint); font-style: italic; }
+
+/* Summary box */
+.summary {
+  background: var(--ink); color: rgba(250,248,245,0.85);
+  border-radius: 4px; padding: 32px;
+  font-size: 0.9rem; line-height: 1.75;
+}
+.summary h3 { font-family: var(--font-serif); color: #FAF8F5; font-weight: 500; margin-bottom: 16px; font-size: 1.1rem; }
+.summary ul { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+.summary a { color: var(--terracotta); }
+</style>
+</head>
+<body>
+<div class="guide">
+
+  <div class="guide-header">
+    <div class="guide-tag">Step-by-step setup guide</div>
+    <h1 class="guide-title">How to publish your website with GitHub + Netlify</h1>
+    <p class="guide-subtitle">Written for complete beginners. No prior experience needed. You will have your site live at <strong>yazanawwad.com</strong> by the end of this guide — free, fast, and fully in your control.</p>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">What we'll do</div>
+    <ol>
+      <li><a href="#step1">Install the tools (GitHub Desktop)</a></li>
+      <li><a href="#step2">Create your GitHub account</a></li>
+      <li><a href="#step3">Upload your website files to GitHub</a></li>
+      <li><a href="#step4">Create your Netlify account and connect GitHub</a></li>
+      <li><a href="#step5">Connect your domain (yazanawwad.com)</a></li>
+      <li><a href="#step6">Update your site any time</a></li>
+      <li><a href="#step7">Add a new article</a></li>
+      <li><a href="#step8">Set up your contact form (Formspree)</a></li>
+    </ol>
+  </div>
+
+
+  <!-- STEP 1 -->
+  <div class="step-block" id="step1">
+    <div class="step-num">1</div>
+    <div class="step-title">Install GitHub Desktop</div>
+    <div class="step-body">
+      <p>GitHub Desktop is a free app that lets you manage your website files without any complicated commands. Think of it like a "save + upload" button for your website.</p>
+      <p><strong>Download it here:</strong> <a href="https://desktop.github.com" target="_blank">desktop.github.com</a></p>
+    </div>
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Go to the link above and click <strong>"Download for Windows"</strong> (or Mac if you're on a Mac)</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Open the downloaded file and install it like any normal program</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Don't open it yet — we'll set it up in Step 2</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- STEP 2 -->
+  <div class="step-block" id="step2">
+    <div class="step-num">2</div>
+    <div class="step-title">Create your GitHub account</div>
+    <div class="step-body">
+      <p>GitHub is a website where your code files are stored safely online. It's free. Think of it like Google Drive — but specifically for website files.</p>
+      <p><strong>Go here:</strong> <a href="https://github.com/signup" target="_blank">github.com/signup</a></p>
+    </div>
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Enter your email address, create a password, and choose a username.<br><strong>Tip:</strong> Use something professional like <code>yazanawwad</code> or <code>yazan-awwad</code> — this will be visible in URLs</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Verify your email address (GitHub sends you a confirmation email)</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">You're in. Now open <strong>GitHub Desktop</strong> and click <strong>"Sign in to GitHub.com"</strong> — log in with your new account</div>
+      </div>
+    </div>
+    <div class="tip">
+      <span class="tip-label">✓ Good to know</span>
+      GitHub is free forever for personal websites and public projects. You don't need to pay anything.
+    </div>
+  </div>
+
+
+  <!-- STEP 3 -->
+  <div class="step-block" id="step3">
+    <div class="step-num">3</div>
+    <div class="step-title">Upload your website files to GitHub</div>
+    <div class="step-body">
+      <p>First, make sure your website files are organised in one folder on your computer. They should look like this:</p>
+    </div>
+
+    <div class="file-tree">
+<span class="folder">yazan-site/</span>
+├── <span class="file">index.html</span>        <span class="comment">← your homepage</span>
+├── <span class="file">articles.html</span>     <span class="comment">← your articles list page</span>
+├── <span class="folder">css/</span>
+│   ├── <span class="file">style.css</span>
+│   └── <span class="file">article.css</span>
+├── <span class="folder">js/</span>
+│   └── <span class="file">main.js</span>
+└── <span class="folder">articles/</span>
+    ├── <span class="file">norway-growth.html</span>
+    ├── <span class="file">customer-service-systems.html</span>
+    └── <span class="file">mis-design-thinking.html</span>
+    </div>
+
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">In GitHub Desktop, click <strong>"Create a New Repository on your hard drive..."</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Name it <code>yazan-awwad-website</code> (no spaces). Choose where to save it on your computer. Click <strong>Create Repository</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Open that folder on your computer (click <strong>"Show in Explorer"</strong> or <strong>"Show in Finder"</strong> in GitHub Desktop). Copy all your website files into it — all the HTML files, the css folder, the js folder, and the articles folder</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Go back to GitHub Desktop. You'll see all the files listed with green "+" icons — this means they're new files ready to be saved</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">At the bottom-left, you'll see a box. Type a short message like <code>First version of my site</code> in the <strong>Summary</strong> field. Then click <strong>Commit to main</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Now click <strong>"Publish repository"</strong> at the top. Make sure <strong>"Keep this code private"</strong> is <strong>unchecked</strong> (it needs to be public for Netlify to read it). Click <strong>Publish Repository</strong></div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">✓ What just happened?</span>
+      Your files are now stored on GitHub's servers. Go to <a href="https://github.com" target="_blank">github.com</a> and log in — you'll see your repository listed there.
+    </div>
+  </div>
+
+
+  <!-- STEP 4 -->
+  <div class="step-block" id="step4">
+    <div class="step-num">4</div>
+    <div class="step-title">Create your Netlify account and connect GitHub</div>
+    <div class="step-body">
+      <p>Netlify is the service that takes your files from GitHub and makes them available as a live website. It's free, and it updates your site automatically every time you change a file.</p>
+      <p><strong>Go here:</strong> <a href="https://app.netlify.com/signup" target="_blank">app.netlify.com/signup</a></p>
+    </div>
+
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Click <strong>"Sign up with GitHub"</strong> — this connects your Netlify account to your GitHub account automatically</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Once you're in, click the button <strong>"Add new site"</strong> → then <strong>"Import an existing project"</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Click <strong>"Deploy with GitHub"</strong>. Netlify will ask permission to access your GitHub — click <strong>Authorize</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">You'll see your repositories listed. Click <strong>yazan-awwad-website</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">On the next screen, leave everything as-is. Just scroll down and click <strong>"Deploy yazan-awwad-website"</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Wait about 30 seconds. Netlify will give you a temporary URL like <code>random-name-123.netlify.app</code> — click it to see your live site!</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">✓ Your site is now live on the internet</span>
+      Anyone with that Netlify URL can see it. In the next step, we'll connect your real domain (yazanawwad.com).
+    </div>
+  </div>
+
+
+  <!-- STEP 5 -->
+  <div class="step-block" id="step5">
+    <div class="step-num">5</div>
+    <div class="step-title">Connect your domain (yazanawwad.com)</div>
+    <div class="step-body">
+      <p>This step points your existing domain to Netlify so that when someone goes to <strong>yazanawwad.com</strong>, they see your new site. You'll need to log into wherever you bought your domain (this is usually GoDaddy, Namecheap, Google Domains, or similar).</p>
+    </div>
+
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">In Netlify, go to your site dashboard → click <strong>"Domain management"</strong> → then <strong>"Add a domain"</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Type <code>yazanawwad.com</code> and click <strong>Verify</strong> → then <strong>Add domain</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Netlify will show you some <strong>DNS records</strong> to add. These look like:<br><br>
+          <code>Type: A · Name: @ · Value: 75.2.60.5</code><br>
+          <code>Type: CNAME · Name: www · Value: your-site.netlify.app</code>
+        </div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Log into your domain registrar (GoDaddy, Namecheap, etc.). Find the <strong>DNS settings</strong> for yazanawwad.com. Add the records exactly as Netlify shows them</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Wait up to 24 hours (usually much faster — often under 1 hour). Your site will appear at <strong>yazanawwad.com</strong> with a free HTTPS certificate (the padlock)</div>
+      </div>
+    </div>
+
+    <div class="warning">
+      <span class="warning-label">⚠ Important</span>
+      If you're currently using WordPress at yazanawwad.com, the moment you change the DNS records, your WordPress site will go offline and your new site will appear. Make sure you're ready to switch before doing this step.
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">✓ Not sure which registrar you use?</span>
+      Go to <a href="https://lookup.icann.org" target="_blank">lookup.icann.org</a>, type yazanawwad.com, and look for the "Registrar" field — it tells you exactly who manages your domain.
+    </div>
+  </div>
+
+
+  <!-- STEP 6 -->
+  <div class="step-block" id="step6">
+    <div class="step-num">6</div>
+    <div class="step-title">Update your site any time</div>
+    <div class="step-body">
+      <p>This is the real power of this setup. Updating your site is now a simple 3-step process that takes about 60 seconds:</p>
+    </div>
+
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">1</div>
+        <div class="substep-text"><strong>Edit your file.</strong> Open the file you want to change in any text editor (Notepad, VS Code, anything). Make your changes. Save the file.</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">2</div>
+        <div class="substep-text"><strong>Open GitHub Desktop.</strong> You'll see your changed files listed. Write a short note about what you changed (e.g. <code>Updated about section</code>). Click <strong>Commit to main</strong>.</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">3</div>
+        <div class="substep-text"><strong>Click "Push origin".</strong> That's it. Netlify detects the change automatically and updates your live site in about 30 seconds.</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">✓ Recommend: VS Code for editing</span>
+      Download <a href="https://code.visualstudio.com" target="_blank">VS Code</a> — it's free, it highlights code in colour, and it makes editing HTML much easier than Notepad. When you open your site folder in VS Code, all files are shown in a sidebar and you can click to edit any of them.
+    </div>
+  </div>
+
+
+  <!-- STEP 7 -->
+  <div class="step-block" id="step7">
+    <div class="step-num">7</div>
+    <div class="step-title">Add a new article</div>
+    <div class="step-body">
+      <p>Every time you write something new, here is the exact process:</p>
+    </div>
+
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">1</div>
+        <div class="substep-text">Go to your <code>articles/</code> folder. Find any existing article file (e.g. <code>norway-growth.html</code>). <strong>Copy it</strong> and rename the copy to something like <code>my-new-article.html</code></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">2</div>
+        <div class="substep-text">Open your new file. Change:
+          <br>• The <code>&lt;title&gt;</code> tag at the top to your article title
+          <br>• The <code>post-tag</code> text (the category)
+          <br>• The <code>article-title</code> heading
+          <br>• The date and read time in <code>article-byline</code>
+          <br>• All the paragraphs inside <code>article-body</code>
+          <br>• The "Next article →" link at the bottom to point to another article
+        </div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">3</div>
+        <div class="substep-text">Open <code>articles.html</code>. Copy one of the existing <code>&lt;a class="article-card"&gt;</code> blocks and paste a new one. Update the <code>href</code>, title, excerpt, and date to match your new article</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">4</div>
+        <div class="substep-text">Open <code>index.html</code>. In the "Writing" section, add a new <code>post-preview-card</code> link pointing to your new article</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">5</div>
+        <div class="substep-text">Save all files → GitHub Desktop → Commit → Push. Done. Your article is live.</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <span class="tip-label">✓ Shortcut</span>
+      You can also send me your article text and I'll generate the complete HTML file for you. Then you just drop it into the folder and push. One minute of work on your end.
+    </div>
+  </div>
+
+
+  <!-- STEP 8 -->
+  <div class="step-block" id="step8">
+    <div class="step-num">8</div>
+    <div class="step-title">Set up your contact form (Formspree)</div>
+    <div class="step-body">
+      <p>The contact form on your site needs a service to actually send emails. We use <strong>Formspree</strong> — it's free for up to 50 submissions per month and takes 3 minutes to set up.</p>
+      <p><strong>Go here:</strong> <a href="https://formspree.io/register" target="_blank">formspree.io/register</a></p>
+    </div>
+
+    <div class="substeps">
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Sign up with your Gmail (<code>yazanawwad61@gmail.com</code>) — this is where form submissions will be sent</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Once inside, click <strong>"+ New Form"</strong>. Name it <code>Contact Form</code>. Click <strong>Create Form</strong></div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Formspree gives you a form endpoint URL that looks like: <code>https://formspree.io/f/xyzabc12</code>. Copy it.</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Open <code>index.html</code>. Find this line:<br>
+          <code>action="https://formspree.io/f/YOUR_FORM_ID"</code><br>
+          Replace <code>YOUR_FORM_ID</code> with your actual ID from Formspree</div>
+      </div>
+      <div class="substep">
+        <div class="substep-num">→</div>
+        <div class="substep-text">Save → GitHub Desktop → Commit → Push. Test it by submitting the form on your live site — you'll receive the email in your Gmail within seconds</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h3>Your complete setup at a glance</h3>
+    <ul>
+      <li><strong>Files live on:</strong> GitHub (free) — github.com</li>
+      <li><strong>Site hosted on:</strong> Netlify (free) — netlify.com</li>
+      <li><strong>Contact form via:</strong> Formspree (free up to 50/month) — formspree.io</li>
+      <li><strong>To edit your site:</strong> Edit file → GitHub Desktop → Commit → Push → Done</li>
+      <li><strong>To add an article:</strong> Copy an existing article HTML, edit the content, add the card to articles.html, push</li>
+      <li><strong>To add your photo:</strong> Put a photo file in your site folder, then in index.html replace the placeholder div with <code>&lt;img src="your-photo.jpg" alt="Yazan Awwad"&gt;</code></li>
+      <li><strong>Recommended editor:</strong> <a href="https://code.visualstudio.com">VS Code</a> (free)</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
