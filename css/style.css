@@ -225,7 +225,9 @@ nav.scrolled {
 
 .hero-banner img {
   width: 100%;
-  height: auto;
+  height: 220px;
+  object-fit: cover;
+  object-position: center center;
   display: block;
   filter: grayscale(100%) brightness(0.75) contrast(1.1);
 }
