@@ -217,7 +217,7 @@ nav.scrolled {
 
 .hero-banner {
   width: 100%;
-  height: clamp(200px, 28vw, 340px);
+  height: 120px;
   position: relative;
   overflow: hidden;
   margin-bottom: 56px;
