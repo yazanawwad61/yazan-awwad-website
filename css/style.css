@@ -220,14 +220,14 @@ nav.scrolled {
   position: relative;
   margin-bottom: 56px;
   margin-top: var(--nav-h);
-  padding: 40px 0;
-  background: var(--paper);
   line-height: 0;
 }
 
 .hero-banner img {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
+  object-position: right 35%;
   display: block;
   filter: grayscale(100%) brightness(0.75) contrast(1.1);
 }
