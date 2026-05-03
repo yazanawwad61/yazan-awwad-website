@@ -215,24 +215,22 @@ nav.scrolled {
   overflow: hidden;
 }
 
-.hero-banner img {
+.hero-banner {
   width: 100%;
-  height: auto;
-  display: block;
-  filter: grayscale(100%) brightness(0.75) contrast(1.1);
-  transform: scale(1.04);
-  transition: transform 8s ease;
+  position: relative;
+  margin-bottom: 56px;
+  margin-top: var(--nav-h);
+  background: #0a0806;
+  line-height: 0;
 }
 
 .hero-banner img {
   width: 100%;
-  height: auto;
+  height: 160px;
   object-fit: contain;
   object-position: center;
   display: block;
   filter: grayscale(100%) brightness(0.75) contrast(1.1);
-  transform: scale(1.04);
-  transition: transform 8s ease;
 }
 
 .hero-banner:hover img {
