@@ -215,28 +215,75 @@ nav.scrolled {
   overflow: hidden;
 }
 
-.hero-bg-text {
-  position: absolute;
-  top: 50%;
-  right: -40px;
-  transform: translateY(-50%);
-  font-family: var(--font-serif);
-  font-size: clamp(100px, 17vw, 200px);
-  font-weight: 600;
-  font-style: italic;
-  color: var(--paper-deep);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.04em;
-}
-
 .hero-inner {
-  max-width: var(--max);
+  max-width: 1000px;
   margin: 0 auto;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
   position: relative;
   z-index: 2;
+}
+
+.hero-photo-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero-photo-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: none;
+}
+
+#hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: grayscale(100%) brightness(0.6) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+#hero-photo-container:hover #hero-photo-img {
+  filter: grayscale(100%) brightness(0.75) contrast(1.1);
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-photo-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(250, 248, 245, 0.3);
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+#hero-photo-container:hover .hero-photo-hint {
+  opacity: 0;
 }
 
 .hero-greeting {
@@ -261,7 +308,7 @@ nav.scrolled {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
   font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.02em;
@@ -278,7 +325,7 @@ nav.scrolled {
   font-size: 1rem;
   color: var(--ink-mid);
   line-height: 1.78;
-  max-width: 500px;
+  max-width: 440px;
   margin-bottom: 48px;
 }
 
@@ -378,6 +425,26 @@ nav.scrolled {
     transform: scaleY(0);
     transform-origin: bottom;
     opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-photo-side {
+    order: -1;
+  }
+
+  #hero-photo-container {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .hero-photo-hint {
+    display: none;
   }
 }
 

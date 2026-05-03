@@ -31,28 +31,38 @@
 
   <!-- ─── HERO ──────────────────────────────────────────── -->
   <section id="hero">
-    <div class="hero-bg-text">Yazan</div>
     <div class="hero-inner">
-      <div class="hero-greeting reveal">Hello, I'm Yazan</div>
-      <h1 class="hero-title reveal reveal-delay-1">
-        I build solutions<br>
-        that bridge <em>business</em><br>
-        and technology.
-      </h1>
-      <p class="hero-desc reveal reveal-delay-2">
-        MIS graduate from the University of Jordan. Erasmus+ alumnus from Bergen, Norway. I'm drawn to places and
-        challenges that push me outside my comfort zone, academically, professionally, and personally.
-      </p>
-      <div class="hero-actions reveal reveal-delay-3">
-        <a href="#contact" class="btn-main">
-          Let's connect
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </a>
-        <span class="hero-scroll">Scroll</span>
+      <div class="hero-content">
+        <div class="hero-greeting reveal">Hello, I'm Yazan</div>
+        <h1 class="hero-title reveal reveal-delay-1">
+          I build solutions<br>
+          that bridge <em>business</em><br>
+          and technology.
+        </h1>
+        <p class="hero-desc reveal reveal-delay-2">
+          MIS graduate from the University of Jordan. Erasmus+ alumnus from Bergen, Norway. I'm drawn to places and
+          challenges that push me outside my comfort zone — academically, professionally, and personally.
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+          <a href="#contact" class="btn-main">
+            Let's connect
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+          <span class="hero-scroll">Scroll</span>
+        </div>
       </div>
+
+      <div class="hero-photo-side reveal reveal-delay-2">
+        <div id="hero-photo-container">
+          <img id="hero-photo-img" src="hero-photo.jpg" alt="Yazan Awwad">
+          <canvas id="hero-canvas"></canvas>
+          <div class="hero-photo-hint">Move your cursor</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -298,6 +308,7 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/hero-effect.js"></script>
 </body>
 
 </html>
